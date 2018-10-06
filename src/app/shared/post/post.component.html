@@ -1,0 +1,39 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<div class="full-frame">
+
+  <div class="image-section">
+    <img [src]="defaultImage">
+  </div>
+
+  <div class="text-section">
+ 
+   
+    <div *ngIf="imageData.creationDate && imageData.uploadedBy && displayPostedBy" class="text-section-row row0">
+      <span>by: {{imageData.uploadedBy.name}} on: {{imageData.creationDate | date: 'MM/dd/yy'}}</span>
+    </div>
+
+    <div *ngIf="imageData.favoriteCount >= 0" class="text-section-row row2">
+      <span>No of <i class="fa fa-heart"></i> {{imageData.favoriteCount}}</span>
+    </div>
+
+    <div class="text-section-row row3 action-row hvr-grow" *ngIf="displayFavoritesButton">
+          <span (click)="onFavoritesClicked()">
+            <i class="fa fa-heart"></i> My Favorite
+          </span>
+    </div>
+
+    <div class="text-section-row row4 action-row hvr-grow" *ngIf="displayFollowButton">
+          <span (click)="onFollowClicked()">
+            <span class="glyphicon glyphicon-tags"></span>
+            Follow User
+          </span>
+    </div>
+  </div>
+  
+</div>
+
+
+</html>
